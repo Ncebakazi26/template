@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <link rel="stylesheet" href="registration_number.css">
+   
+    <script type="text/x-template" class="userTemplate">
+       <ul class="myList">
+        {{#each  RegistrationNum}}
+        <li>{{this}}</li>
+    {{/each}}
+    </ul>
+    </script>
+        
+</head>
+
+<body>
+    <div class="flex-box">
+    <div class="container">
+        <div class="row1">
+            <div class="row header">
+                <h2 >Please enter a registration number and click the add button</h2>
+               <h3> Below find the instructions for the other buttons:</h3>
+                <ul class="list">
+                    <li> Choose a town and click the specific town button in order to see registration numbers for that specific town</li>
+                    <li>When you click the dispaly all button it will show all registration numbers and the clear button is used to clear the screen and local storage </li>
+                </ul>
+            </div>
+            <div class="message" >
+             
+            </div>
+
+            <div class="col-12">
+                <h2 class="registrationNumbers"></h2>
+            </div>
+          
+            <div class=" input">
+
+                <input id="form" type="console.text"  placeholder="The format:CA 123-123/ CA 123 123"  pattern="/^((CA|CY|CL)\s\d{3}\s\d{3})$/" title="Please follow this format CA 123-123/ CA 123 123"></input>
+
+            </div>
+           
+
+            <div class="col-12">
+                <button id="btn" class="Addbtn" type="submit" form="form2">ADD</button>
+                <form class="language">
+                    <input type="radio" id="Cape" class="reg" name="registration" value="CA">
+                    <label class="radio" for="CT">CapeTown</label>
+                    <input type="radio" id="Bellville" class="reg" name="registration" value="CY">
+                    <label class="radio" for="BEL">Bellville</label>
+                    <input type="radio" id="Paarl" class="reg" name="registration" value="CL">
+                    <label class="radio" for="PL">Paarl</label><br>
+                </form>
+                <div class="buttons">
+                    <button class="town">SPECIFIC TOWN</button>
+                    <button class="display">DISPLAY ALL</button>
+                    <button class="clear">CLEAR</button>  
+                
+               
+                
+            </div>
+            </div>
+        </div>
+        <h3 class="head">Registration Numbers List :</h3>
+        <ul id="myList" >
+            
+        </ul>
+
+
+
+
+    </div>
+<!-- template -->
+    <div class="container">
+     
+        <div class="regData">
+
+        </div>
+        
+        <div class="row1">
+            <div class="row header">
+                <h2 >Please enter a registration number and click the add button</h2>
+               <h3> Below find the instructions for the other buttons:</h3>
+                <ul class="list">
+                    <li> Choose a town and click the specific town button in order to see registration numbers for that specific town</li>
+                    <li>When you click the dispaly all button it will show all registration numbers and the clear button is used to clear the screen and local storage </li>
+                </ul>
+            </div>
+            <div class="message" >
+             
+            </div>
+
+            <div class="col-12">
+                <h2 class="registrationNumbers"></h2>
+            </div>
+            <div class=" input">
+
+                <input id="form_temp" type="console.text"  placeholder="The format:CA 123-123/ CA 123 123"  pattern="/^((CA|CY|CL)\s\d{3}\s\d{3})$/" title="Please follow this format CA 123-123/ CA 123 123"></input>
+
+            </div>
+
+            <div class="col-12">
+                <button id="btn" class="Addbtn_temp" type="submit" form="form2">ADD</button>
+                
+                <form class="language">
+                    <input type="radio" id="Cape_temp" class="reg_temp" name="registrations" value="CA_t">
+                    <label class="radio" for="CT">CapeTown</label>
+                    <input type="radio" id="Bellville_temp" class="reg_temp" name="registrations" value="CY_t">
+                    <label class="radio" for="BEL">Bellville</label>
+                    <input type="radio" id="Paarl_temp" class="reg_temp" name="registrations" value="CL_t">
+                    <label class="radio" for="PL">Paarl</label><br>
+                </form>
+                <div class="buttons">
+                    <button class="town_temp">SPECIFIC TOWN</button>
+                    <button class="display_temp">DISPLAY ALL</button>
+                    <button class="clear_temp">CLEAR</button>  
+                
+               
+                
+            </div>
+            </div>
+        </div>
+        <h3 class="head">Registration Numbers List :</h3>
+        <div id="myList_temp">
+            
+        </div>
+    </div>
+</div>
+    <script src="./factory_function.js" charset="utf-8"></script>
+    <script src="./registration_number.js" charset="utf-8"></script>
+    <script src="./registrationNum_template.js" charset="utf-8"></script>
+
+
+
+</body>
+
+</html>
