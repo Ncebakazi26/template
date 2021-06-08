@@ -348,6 +348,7 @@ width: 100%;
 }
 .list{
   font-size: 20px;
+  background: #ffe5e5;
 }
 .error{
   color: red;
@@ -358,15 +359,33 @@ width: 100%;
   margin: 15px;
   padding-right: 50px;
     width: 6em; 
-  border: 1px solid black;
+  border: 1px solid #000000;
   border-radius: 27%;
   
 }
- ul{
+/* .reg_number_temp{
+  background-color: yellow;
+  padding: 15px;
+  margin: 15px;
+  padding-right: 50px;
+    width: 6em; 
+  border: 1px solid #000000;
+  border-radius: 27%;
+} */
+ #myList{
   background: #ffe5e5;
   padding: 5px;
- 
- 
+}
+.myList1 li{
+  list-style: none;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-left:10px;
+  margin-right:1px 
+}
+.myList1{
+  background: #ffe5e5;
+  padding: 5px;
 }
  h3{
 margin-top: -10px;
