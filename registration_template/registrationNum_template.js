@@ -15,35 +15,35 @@ var userTemplate = Handlebars.compile(templateSource);
 //old code
 //var RegistrationNum = registration_numbers()
 
-function textclear() {
+function textclear_temp() {
     textareaElem.value = ""
     document.getElementById('Cape_temp').checked = false
     document.getElementById('Bellville_temp').checked = false
     document.getElementById('Paarl_temp').checked = false
   
   }
-  var registrationList = JSON.parse(localStorage.getItem('registrations_temp'))
-  var RegistrationNum = registration_numbers(registrationList)
-  if (registrationList) {
-    for (var i = 0; i < registrationList.length; i++) {
-      var x = registrationList[i]
-      //appendElement(x)
+  var registrationList_temp = JSON.parse(localStorage.getItem('registrations_temp'))
+  var RegistrationNum = registration_numbers(registrationList_temp)
+  var regsTemplate = []
+
+  if (registrationList_temp) {
+    for (var i = 0; i < registrationList_temp.length; i++) {
+      var x = registrationList_temp[i];
+      var obj = {regNumber: x};
+      regsTemplate.push(obj)
     }
   }
-  
-   //function appendElement(newValue) {
-   
-    
-//     newValue = newValue.toUpperCase()
-//     var element = document.createElement("li");
-//     var textnode = document.createTextNode(newValue);
-//     element.appendChild(textnode);
-//     element.classList.add('reg_number');
-//     document.getElementById("myList").appendChild(element);
-  //}
+  var userDataHTML = userTemplate({
+
+    RegList: regsTemplate
+  })
+
+  list_tempElem.innerHTML = userDataHTML
   function registration_temp() {
-    list_tempElem.innerHTML = userTemplate({RegistrationNum:x})
     var value1 = document.querySelector("#form_temp").value
+    var arrayReg = regsTemplate
+   
+ 
     if (value1 === "") {
       setTimeout(function () {
         displayMessageElem.innerHTML = "Please enter registration number"
@@ -55,11 +55,21 @@ function textclear() {
       return false
     }
     RegistrationNum.setReg(value1)
-    registrationList = JSON.parse(localStorage.getItem('registrations_temp'))
+    registrationList_temp = JSON.parse(localStorage.getItem('registrations_temp'))
+    console.log(RegistrationNum.setReg(value1))
     if(RegistrationNum.setReg(value1)) {
+
+      var obj = {regNumber: value1};
+      arrayReg.push(obj)
+  
+      var userDataHTML = userTemplate({
+         RegList: arrayReg
+      })
+    
+      list_tempElem.innerHTML = userDataHTML
    
-      if (registrationList) {
-        if (RegistrationNum.isReapted(registrationList)) {
+      if (registrationList_temp) {
+        if (RegistrationNum.isReapted(registrationList_temp)) {
           setTimeout(function () {
             displayMessageElem.innerHTML = "This registration number already exist"
             displayMessageElem.classList.add("error")
@@ -70,13 +80,13 @@ function textclear() {
   
         } else {
           localStorage.setItem('registrations_temp', JSON.stringify(RegistrationNum.getReglist()));
-          appendElement(value1)
+          //appendElement2(value1)
         }
       } else {
         localStorage.setItem('registrations_temp', JSON.stringify(RegistrationNum.getReglist()));
-        appendElement(value1)
+       // appendElement2(value1)
       }
-      textclear()
+      textclear_temp()
     }
     else{
         setTimeout(function(){
@@ -91,23 +101,24 @@ function textclear() {
   }
   
   function forEachTown_temp() {
+    var arrayReg = []
     var radiobutton = document.querySelector(".reg_temp:checked")
-    document.getElementById("myList_temp").innerHTML = ""
+    document.querySelector(".myList_temp").innerHTML = ""
     if(radiobutton){
       var townList= RegistrationNum.forTown(radiobutton.value)
   
       if(townList.length !== 0){
         for (var i = 0; i < townList.length; i++){
           if (townList[i].startsWith(radiobutton.value)) {
-            appendElement(townList[i])
+            var obj = {regNumber: townList[i]};
+            arrayReg.push(obj)
+            //appendElement2(townList[i])
           
             displayMessageElem.innerHTML = ""
-            textclear()
+            textclear_temp()
           }
         }
       }
-    
-  
         else {
           
           setTimeout(function () {
@@ -116,7 +127,7 @@ function textclear() {
           }, 0);
           setTimeout(function () {
             displayMessageElem.innerHTML = ""
-            textclear()
+            textclear_temp()
           }, 2000);
       }
     } 
@@ -128,19 +139,33 @@ function textclear() {
       setTimeout(function () {
         displayMessageElem.innerHTML = ""
       }, 2000);
-      textclear()
+      textclear_temp()
     }
-    
+    var userDataHTML = userTemplate({
+      RegList: arrayReg
+   })
+ 
+   list_tempElem.innerHTML = userDataHTML
     
   }
   function displayAll_temp() {
-     document.getElementById("myList_temp").innerHTML = ""
-    if (registrationList) {
-      for (var i = 0; i < registrationList.length; i++) {
-        var x = registrationList[i]
-        appendElement(x)
+    var regsTemplate = []
+     document.querySelector(".myList_temp").innerHTML = ""
+   
+     if (registrationList_temp) {
+      for (var i = 0; i < registrationList_temp.length; i++) {
+        var x = registrationList_temp[i];
+        var obj = {regNumber: x};
+        regsTemplate.push(obj)
       }
+      var userDataHTML = userTemplate({
+  
+        RegList: regsTemplate
+      })
+    
+      list_tempElem.innerHTML = userDataHTML.classList.add('reg_number_temp');
     }
+    
     else {
       setTimeout(function () {
         displayMessageElem.innerHTML = "Currently there are no existing registration numbers"
@@ -151,6 +176,12 @@ function textclear() {
   
       }, 2000);
     }
+  //   var userDataHTML = userTemplate({
+  //     RegList: arrayReg
+  //  })
+ 
+  //  list_tempElem.innerHTML = userDataHTML
+   location.reload() 
   }
   
   
@@ -159,6 +190,6 @@ function textclear() {
   displaybtn_temp.addEventListener('click', displayAll_temp)
   
   clearbtn_temp.addEventListener('click', function () {
-    localStorage.clear()
+    localStorage.removeItem("registrations_temp")
     location.reload()
   });

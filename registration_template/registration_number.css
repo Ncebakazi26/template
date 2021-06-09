@@ -363,7 +363,7 @@ width: 100%;
   border-radius: 27%;
   
 }
-/* .reg_number_temp{
+.myList_temp li{
   background-color: yellow;
   padding: 15px;
   margin: 15px;
@@ -371,7 +371,9 @@ width: 100%;
     width: 6em; 
   border: 1px solid #000000;
   border-radius: 27%;
-} */
+  list-style: none;
+  display: inline-block;
+}
  #myList{
   background: #ffe5e5;
   padding: 5px;
@@ -383,9 +385,9 @@ width: 100%;
   margin-left:10px;
   margin-right:1px 
 }
-.myList1{
+.myList_temp{
   background: #ffe5e5;
-  padding: 5px;
+  /* padding: 5px; */
 }
  h3{
 margin-top: -10px;

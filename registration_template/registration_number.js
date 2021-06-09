@@ -36,10 +36,7 @@ function appendElement(newValue) {
   document.getElementById("myList").appendChild(element);
 }
 function registration() {
- 
   var value = document.querySelector("#form").value
- 
-  
   if (value === "") {
     setTimeout(function () {
       displayMessage.innerHTML = "Please enter registration number"
@@ -135,6 +132,7 @@ function displayAll() {
     for (var i = 0; i < registrationList.length; i++) {
       var x = registrationList[i]
       appendElement(x)
+      location.reload()
     }
   }
   else {
@@ -155,7 +153,7 @@ specifTownbtn.addEventListener('click', forEachTown)
 displaybtn.addEventListener('click', displayAll)
 
 clearbtn.addEventListener('click', function () {
-  localStorage.clear()
+  localStorage.removeItem("registrations")
   location.reload()
 });
 
