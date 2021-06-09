@@ -157,7 +157,9 @@ function displayAll_temp() {
     })
 
     list_tempElem.innerHTML = userDataHTML.classList.add('reg_number_temp');
+    location.reload() 
   }
+
 
   else {
     setTimeout(function () {
@@ -169,7 +171,7 @@ function displayAll_temp() {
 
     }, 2000);
   }
-  location.reload()
+ 
 }
 
 addbtn_temp.addEventListener('click', registration_temp)

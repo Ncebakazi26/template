@@ -432,9 +432,15 @@ margin-left: 10px;
 .message{
   font-size: 20px;
 }
+.message_temp{
+  font-size: 20px;
+}
 .flex-box{
   display: flex;
 }
-
+.row1{
+  padding-left: 10px;
+  margin: 10px;
+}
 
 
