@@ -53,17 +53,9 @@ function registration_temp() {
   }
   RegistrationNum.setReg(value1)
   registrationList_temp = JSON.parse(localStorage.getItem('registrations_temp'))
-  console.log(RegistrationNum.setReg(value1))
+
   if (RegistrationNum.setReg(value1)) {
 
-    var obj = { regNumber: value1 };
-    arrayReg.push(obj)
-
-    var userDataHTML = userTemplate({
-      RegList: arrayReg
-    })
-
-    list_tempElem.innerHTML = userDataHTML
 
     if (registrationList_temp) {
       if (RegistrationNum.isReapted(registrationList_temp)) {
@@ -75,13 +67,25 @@ function registration_temp() {
           displayMessageElem.innerHTML = ""
         }, 2000);
 
-      } else {
+      }
+      
+      else {
+       
         localStorage.setItem('registrations_temp', JSON.stringify(RegistrationNum.getReglist()));
       }
     } else {
       localStorage.setItem('registrations_temp', JSON.stringify(RegistrationNum.getReglist()));
+      var obj = { regNumber: value1 };
+      arrayReg.push(obj)
+  
+      var userDataHTML = userTemplate({
+        RegList: arrayReg
+      })
+  
+      list_tempElem.innerHTML = userDataHTML
     }
-    textclear_temp()
+   
+    
   }
   else {
     setTimeout(function () {
@@ -93,6 +97,7 @@ function registration_temp() {
       displayMessageElem.innerHTML = ""
     }, 2000);
   }
+  textclear_temp()
 }
 
 function forEachTown_temp() {

@@ -387,10 +387,13 @@ width: 100%;
 }
 .myList_temp{
   background: #ffe5e5;
+  /* padding-right: 20px; */
   /* padding: 5px; */
 }
  h3{
 margin-top: -10px;
+text-align: center;
+padding-top: 20px;
 }
 .clear{
   background: #ffe5e5;
