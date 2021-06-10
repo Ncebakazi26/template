@@ -66,27 +66,30 @@ function registration_temp() {
         setTimeout(function () {
           displayMessageElem.innerHTML = ""
         }, 2000);
-
+        textclear_temp()
+        return false
+        
       }
       
       else {
+      localStorage.setItem('registrations_temp', JSON.stringify(RegistrationNum.getReglist()));
        
-        localStorage.setItem('registrations_temp', JSON.stringify(RegistrationNum.getReglist()));
+         location.reload() 
       }
+      
     } else {
       localStorage.setItem('registrations_temp', JSON.stringify(RegistrationNum.getReglist()));
-      var obj = { regNumber: value1 };
-      arrayReg.push(obj)
-  
-      var userDataHTML = userTemplate({
-        RegList: arrayReg
-      })
-  
-      list_tempElem.innerHTML = userDataHTML
     }
-   
-    
+    var obj = { regNumber: value1 };
+    arrayReg.push(obj)
+
+    var userDataHTML = userTemplate({
+      RegList: arrayReg
+    })
+     list_tempElem.innerHTML = userDataHTML
+    textclear_temp()
   }
+  
   else {
     setTimeout(function () {
       displayMessageElem.innerHTML = "Please follow this format CA 123-123/ CA 123 123"
@@ -115,9 +118,11 @@ function forEachTown_temp() {
 
           displayMessageElem.innerHTML = ""
           textclear_temp()
+          
         }
       }
     }
+   
     else {
       setTimeout(function () {
         displayMessageElem.innerHTML = "There is no registration number for this town"
@@ -155,6 +160,7 @@ function displayAll_temp() {
       var x = registrationList_temp[i];
       var obj = { regNumber: x };
       regsTemplate.push(obj)
+      location.reload()
     }
     var userDataHTML = userTemplate({
 
@@ -162,7 +168,7 @@ function displayAll_temp() {
     })
 
     list_tempElem.innerHTML = userDataHTML.classList.add('reg_number_temp');
-    location.reload() 
+    
   }
 
 
