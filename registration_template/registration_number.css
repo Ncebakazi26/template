@@ -359,10 +359,12 @@ width: 100%;
   background-color: yellow;
   padding: 15px;
   margin: 15px;
-  padding-right: 50px;
+  padding-right: 30px;
     width: 6em; 
   border: 1px solid #000000;
   border-radius: 27%;
+  list-style: none;
+  display: inline-block;
   text-align: center;
   
 }
