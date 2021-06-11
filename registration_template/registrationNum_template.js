@@ -37,9 +37,8 @@ var userDataHTML = userTemplate({
 
 list_tempElem.innerHTML = userDataHTML
 function registration_temp() {
-  var value1 = document.querySelector("#form_temp").value
+  var value1 = (document.querySelector("#form_temp").value).toUpperCase()
   var arrayReg = regsTemplate
-
 
   if (value1 === "") {
     setTimeout(function () {
